@@ -18,7 +18,7 @@ app.use(express.static(path.join('.', 'img')));
 
 function albumToCalendar(album: Album) {
   // const date = '2019' + album.release_date.substring(4).replace(/-/g, '');
-  const day = album.release_date.split('-')[2];
+  const [year, _, day] = album.release_date.split('-');
 
   return `BEGIN:VEVENT
 CREATED:${album.release_date.replace(/-/g, '')}
@@ -26,7 +26,8 @@ UID:${album.id}
 RRULE:FREQ=YEARLY;BYMONTHDAY=${day}
 DTEND;VALUE=DATE:${album.release_date.replace(/-/g, '')}
 TRANSP:OPAQUE
-SUMMARY:${album.name}
+SUMMARY:${album.name} - ${album.artists.map(artist => artist.name).join(', ')} (${year})
+DESCRIPTION:spotify://album/${album.uri.split(':').pop()}
 LAST-MODIFIED:${album.release_date.replace(/-/g, '')}
 DTSTAMP:${album.release_date.replace(/-/g, '')}
 DTSTART;VALUE=DATE:${album.release_date.replace(/-/g, '')}

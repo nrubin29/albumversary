@@ -9,7 +9,6 @@ Users first log in on the Albumversary website, then their Spotify refresh token
 The calendar will work in any calendaring app/application/website on iOS, Android, macOS, Windows, Web, and more.
 
 ### TODO:
-- Display artist, release year, and Spotfy link in each event.
 - Add some form of security so that a user can't add another user's calendar to their own calendaring application.
 - Allow users to delete/hide/filter albums.
 - Allow users to set reminders.
